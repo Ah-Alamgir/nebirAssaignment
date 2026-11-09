@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# F1TENTH Autonomous Racing - Simulation & Controller Launcher
+# Course: Autonomous Vehicles
+# Track: Sepang International Circuit (Group 3)
+# Driver: Nevir Nafiz Molla
+# ==============================================================================
+
+# Ensure script halts cleanly on Ctrl+C
+cleanup() {
+    echo -e "\n\033[1;33m[!] Stopping all simulation nodes and RViz...\033[0m"
+    kill 0 2>/dev/null || true
+    pkill -f "gym_bridge" 2>/dev/null || true
+    pkill -f "gap_node" 2>/dev/null || true
+    pkill -f "rviz2" 2>/dev/null || true
+    exit 0
+}
+trap cleanup SIGINT SIGTERM
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+# 1. Source ROS 2 system installation
+if [ -f "/opt/ros/jazzy/setup.bash" ]; then
+    source /opt/ros/jazzy/setup.bash
+elif [ -f "/opt/ros/humble/setup.bash" ]; then
+    source /opt/ros/humble/setup.bash
+else
+    echo -e "\033[1;31mError: No ROS 2 installation found in /opt/ros!\033[0m"
+    exit 1
+fi
+
+# 2. Check and build workspace if needed
+if [ ! -f "$SCRIPT_DIR/install/setup.bash" ]; then
+    echo -e "\033[1;33m[*] Building workspace with colcon...\033[0m"
+    colcon build --symlink-install
+fi
+
+# 3. Source local workspace
+source "$SCRIPT_DIR/install/setup.bash"
+
+echo -e "\033[1;36m==============================================================\033[0m"
+echo -e "\033[1;32m🏎️   F1TENTH AUTONOMOUS RACING SIMULATION RUNNER\033[0m"
+echo -e "\033[1;37m    Group: 3 | Student: Nevir Nafiz Molla\033[0m"
+echo -e "\033[1;37m    Track: Sepang International Circuit\033[0m"
+echo -e "\033[1;37m    Challenges: 10 Laps No Collision & Fastest Lap Time\033[0m"
+echo -e "\033[1;36m==============================================================\033[0m"
+
+echo -e "\n\033[1;34m[*] Launching F1TENTH Simulator & RViz2...\033[0m"
+ros2 launch f1tenth_gym_ros gym_bridge_launch.py &
+SIM_PID=$!
+
+# Allow simulator and RViz 3.5 seconds to load map and robot model
+sleep 3.5
+
+echo -e "\n\033[1;32m[*] Starting Follow-the-Gap Controller with Lap Counter & Timer...\033[0m\n"
+ros2 run controllers gap_node
+
+wait $SIM_PID
