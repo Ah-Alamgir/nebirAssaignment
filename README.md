@@ -25,21 +25,21 @@ The controller was benchmarked over 10 full consecutive laps on the official **S
 
 | Lap Number | Lap Time (s) | Average Speed (m/s) | Track Distance (m) | Status |
 |:---:|:---:|:---:|:---:|:---:|
-| **Lap 1** | **79.78 s** | **6.04 m/s** | 481.6 m | ⭐ **FASTEST LAP** |
-| **Lap 2** | 83.19 s | 5.80 m/s | 482.2 m | Clean (0 Collisions) |
-| **Lap 3** | 81.52 s | 5.90 m/s | 481.3 m | Clean (0 Collisions) |
-| **Lap 4** | 80.96 s | 5.95 m/s | 481.5 m | Clean (0 Collisions) |
-| **Lap 5** | 82.99 s | 5.81 m/s | 482.5 m | Clean (0 Collisions) |
-| **Lap 6** | 82.42 s | 5.85 m/s | 482.0 m | Clean (0 Collisions) |
-| **Lap 7** | 82.88 s | 5.83 m/s | 482.8 m | Clean (0 Collisions) |
-| **Lap 8** | 80.59 s | 5.98 m/s | 482.1 m | Clean (0 Collisions) |
-| **Lap 9** | 82.25 s | 5.86 m/s | 482.3 m | Clean (0 Collisions) |
-| **Lap 10** | 83.43 s | 5.79 m/s | 482.7 m | Clean (0 Collisions) |
+| **Lap 1** | 79.61 s | 6.05 m/s | 482.0 m | Clean (0 Collisions) |
+| **Lap 2** | 80.70 s | 5.98 m/s | 482.2 m | Clean (0 Collisions) |
+| **Lap 3** | 79.74 s | 6.05 m/s | 482.2 m | Clean (0 Collisions) |
+| **Lap 4** | **79.16 s** | **6.09 m/s** | 482.2 m | ⭐ **FASTEST LAP** |
+| **Lap 5** | 79.82 s | 6.04 m/s | 482.5 m | Clean (0 Collisions) |
+| **Lap 6** | 80.27 s | 6.01 m/s | 482.6 m | Clean (0 Collisions) |
+| **Lap 7** | 80.73 s | 5.96 m/s | 481.5 m | Clean (0 Collisions) |
+| **Lap 8** | 82.03 s | 5.88 m/s | 482.1 m | Clean (0 Collisions) |
+| **Lap 9** | 79.24 s | 6.08 m/s | 481.7 m | Clean (0 Collisions) |
+| **Lap 10** | 82.17 s | 5.87 m/s | 482.6 m | Clean (0 Collisions) |
 
 - **Total Completed Laps:** 10 / 10 Consecutive Laps
 - **Wall Collisions:** 0 (100% Collision-Free Navigation)
-- **⚡ Fastest Lap Time:** **79.78 seconds**
-- **⏱️ Average Lap Time:** **82.00 seconds**
+- **⚡ Fastest Lap Time:** **79.16 seconds**
+- **⏱️ Average Lap Time:** **80.35 seconds**
 
 ---
 
@@ -103,13 +103,13 @@ This enables the vehicle to take an optimal racing line, clip turn apexes cleanl
 
 ### 6. Curvature-Adaptive Speed Profiler
 Speed is dynamically regulated based on absolute steering angle $|\delta|$ and forward line-of-sight distance $d_{front}$:
-- **Straightaways** ($|\delta| < 2.9^\circ, d_{front} > 5.5\text{ m}$): **$8.2\text{ m/s}$**
-- **Gentle Sweepers** ($|\delta| < 5.7^\circ, d_{front} > 4.0\text{ m}$): **$6.0\text{ m/s}$**
-- **Medium Turns** ($|\delta| < 9.7^\circ$): **$4.4\text{ m/s}$**
-- **Tight Chicanes** ($|\delta| < 14.3^\circ$): **$3.1\text{ m/s}$**
-- **Hairpins** ($|\delta| \ge 14.3^\circ$): **$2.4\text{ m/s}$**
+- **Straightaways** ($|\delta| < 2.9^\circ, d_{front} > 5.5\text{ m}$): **$8.3\text{ m/s}$**
+- **Gentle Sweepers** ($|\delta| < 5.7^\circ, d_{front} > 4.0\text{ m}$): **$6.15\text{ m/s}$**
+- **Medium Turns** ($|\delta| < 9.7^\circ$): **$4.48\text{ m/s}$**
+- **Tight Chicanes** ($|\delta| < 14.3^\circ$): **$3.10\text{ m/s}$**
+- **Hairpins** ($|\delta| \ge 14.3^\circ$): **$2.40\text{ m/s}$**
 
-Longitudinal acceleration is governed by a slew-rate limiter ($a_{max} = 7.5\text{ m/s}^2, d_{max} = 8.8\text{ m/s}^2$) to preserve tire traction and prevent spin-outs.
+Longitudinal acceleration is governed by a slew-rate limiter ($a_{max} = 7.8\text{ m/s}^2, d_{max} = 9.0\text{ m/s}^2$) to preserve tire traction and prevent spin-outs.
 
 ---
 

@@ -37,14 +37,14 @@ class FollowTheGapController:
 
         self.current_speed = 0.0
         self.prev_steer = 0.0
-        self.max_speed = 8.2               # Top speed on straights (m/s)
-        self.sweeper_speed = 6.0           # Speed on sweeps (m/s)
-        self.medium_turn_speed = 4.4       # Medium curves (m/s)
-        self.tight_turn_speed = 3.1        # Chicanes / tight turns (m/s)
-        self.min_speed = 2.4               # Hairpin apex speed (m/s)
+        self.max_speed = 8.3               # Top speed on straights (m/s)
+        self.sweeper_speed = 6.15          # Speed on sweeps (m/s)
+        self.medium_turn_speed = 4.48      # Medium curves (m/s)
+        self.tight_turn_speed = 3.10       # Chicanes / tight turns (m/s)
+        self.min_speed = 2.40              # Hairpin apex speed (m/s)
 
-        self.max_accel = 7.5               # Acceleration limit (m/s^2)
-        self.max_decel = 8.8               # Braking limit (m/s^2)
+        self.max_accel = 7.8               # Acceleration limit (m/s^2)
+        self.max_decel = 9.0               # Braking limit (m/s^2)
         self.dt = 0.01
 
     def process_scan(self, raw_ranges, angle_min, angle_inc):

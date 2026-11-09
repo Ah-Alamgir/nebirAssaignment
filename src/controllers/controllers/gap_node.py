@@ -64,14 +64,14 @@ class ReactiveFollowGap(Node):
         self.car_width_margin = 0.42       # Vehicle half-width expansion margin (m)
 
         # ----------------- Adaptive Speed & Dynamic Profile -----------------
-        self.max_speed = 8.2               # Top speed on long straights (m/s)
-        self.sweeper_speed = 6.0           # Speed on gentle sweeping turns (m/s)
-        self.medium_turn_speed = 4.4       # Speed on medium radius curves (m/s)
-        self.tight_turn_speed = 3.1        # Speed on tight chicanes (m/s)
-        self.min_speed = 2.4               # Speed on sharp hairpins (m/s)
+        self.max_speed = 8.3               # Top speed on long straights (m/s)
+        self.sweeper_speed = 6.15          # Speed on gentle sweeping turns (m/s)
+        self.medium_turn_speed = 4.48      # Speed on medium radius curves (m/s)
+        self.tight_turn_speed = 3.10       # Speed on tight chicanes (m/s)
+        self.min_speed = 2.40              # Speed on sharp hairpins (m/s)
         self.max_steering_angle = 0.4189   # Max steering angle (+/- ~24.0 degrees)
-        self.max_accel = 7.5               # Longitudinal acceleration limit (m/s^2)
-        self.max_decel = 8.8               # Longitudinal braking limit (m/s^2)
+        self.max_accel = 7.8               # Longitudinal acceleration limit (m/s^2)
+        self.max_decel = 9.0               # Longitudinal braking limit (m/s^2)
         self.current_speed = 0.0           # Rate-limited vehicle speed (m/s)
         self.prev_steering = 0.0           # Low-pass filtered previous steering angle
         self.last_drive_time = self.get_clock().now()
