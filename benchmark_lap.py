@@ -206,7 +206,7 @@ def run_benchmark(target_laps=10):
             lap_time = curr_sim_time - lap_start_time
             lap_times.append(lap_time)
             avg_speed = total_lap_dist / lap_time
-            print(f"🏁 Lap {completed_laps:2d}/{target_laps} Completed | Time: {lap_time:6.2f} s | Avg Speed: {avg_speed:4.2f} m/s | Dist: {total_lap_dist:5.1f} m")
+            print(f"🏁 Lap {completed_laps:2d}/{target_laps} Completed | Time: {lap_time:6.2f} s | Avg Speed: {avg_speed:4.2f} m/s | Dist: {total_lap_dist:5.1f} m", flush=True)
             lap_start_time = curr_sim_time
             total_lap_dist = 0.0
 
