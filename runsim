@@ -17,7 +17,20 @@ cleanup() {
 }
 trap cleanup SIGINT SIGTERM
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Robustly resolve script location even if invoked through symlinks
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+    DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)"
+
+# Fallback to standard project path if needed
+if [ ! -d "$SCRIPT_DIR/src/f1tenth_gym_ros" ] && [ -d "/mnt/d/nebirAssaignment/src/f1tenth_gym_ros" ]; then
+    SCRIPT_DIR="/mnt/d/nebirAssaignment"
+fi
+
 cd "$SCRIPT_DIR"
 
 # 1. Source ROS 2 system installation
